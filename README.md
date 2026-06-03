@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+money converter Pro
+My app is a full-stack currency converter, built with next.js, that lets users convert world currencies using live exchange rate or prevailing rate.
 
-## Getting Started
+I built this project to demonstrate working with APIs, handling real time data, a more responsive and professional UI working with Next.js having built one currency converter previously, ie to improve on a legacy application built with C#, CSS and HTML, with single page application, search engine optimization and a more responsive UI/UX in mind.
 
-First, run the development server:
+The features, include :
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Real time conversion using live API.
+Instant updates as users make input.
+Smooth non-blocking UI using async/await for API requests.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Teck Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Next.js(App Router)
+Typescript
+React
+Tailwind CSS
+Exchange rate API
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Lessons Learned
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
