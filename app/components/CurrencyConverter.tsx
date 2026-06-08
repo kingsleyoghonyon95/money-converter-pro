@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { getCurrencies } from "../services/get-currencies";
 
 export default function CurrencyConverter() {
-  const [fromCurrency, setFromCurrency] = useState("USD");
-  const [toCurrency, setToCurrency] = useState("EUR");
+  const [fromCurrency, setFromCurrency] = useState("");
+  const [toCurrency, setToCurrency] = useState("");
   const [amount, setAmount] = useState(1);
   const [result, setResult] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -55,40 +55,49 @@ export default function CurrencyConverter() {
   };
 
   return (
-    <div className="w-full max-w-md space-y-4">
+    <div className="border-2 border-gray-400 rounded-lg p-4 space-y-4 w-full max-w-xl">
       <h1 className="text-2xl font-bold">Currency Converter</h1>
 
-      <div className="flex gap-2 items-center">
-        <select
-          className="border p-2 w-1/3"
-          value={fromCurrency}
-          onChange={(e) => setFromCurrency(e.target.value)}
-        >
-          {Object.entries(currencies).map(([code, name]) => (
-            <option key={code} value={code}>
-              {code} - {name}
+      <div className="border border-gray-300 rounded-md p-3">
+        <div className="flex gap-2 items-center">
+          <select
+            className="border border-gray-300 p-2 flex-1 rounded-md text-sm"
+            value={fromCurrency}
+            onChange={(e) => setFromCurrency(e.target.value)}
+          >
+            <option value="" disabled>
+              From currency
             </option>
-          ))}
-        </select>
+            {Object.entries(currencies).map(([code, name]) => (
+              <option key={code} value={code}>
+                {code} - {name}
+              </option>
+            ))}
+          </select>
 
-        <span>→</span>
+          <span className="text-xl font-bold">→</span>
 
-        <select
-          className="border p-2 w-1/3"
-          value={toCurrency}
-          onChange={(e) => setToCurrency(e.target.value)}
-        >
-          {Object.entries(currencies).map(([code, name]) => (
-            <option key={code} value={code}>
-              {code} - {name}
+          <select
+            className="border border-gray-300 p-2 flex-1 rounded-md text-sm"
+            value={toCurrency}
+            onChange={(e) => setToCurrency(e.target.value)}
+          >
+            <option value="" disabled>
+              To currency
             </option>
-          ))}
-        </select>
+            {Object.entries(currencies).map(([code, name]) => (
+              <option key={code} value={code}>
+                {code} - {name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <input
-        className="border p-2 w-full"
+        className="border border-gray-300 p-2 w-full rounded-md text-sm"
         type="number"
+        placeholder="Amount"
         value={amount}
         onChange={(e) => setAmount(Number(e.target.value))}
       />
@@ -97,7 +106,7 @@ export default function CurrencyConverter() {
         className="bg-black text-white px-4 py-2 rounded w-full"
         onClick={handleConvert}
       >
-        Convert
+        Click to Convert
       </button>
 
       {result !== null && (
