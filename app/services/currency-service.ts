@@ -1,5 +1,4 @@
-import { CurrencyConversionResponse } from '../types/currency';
-
+import { CurrencyConversionResponse } from "../types/currency";
 
 export async function convertCurrency(
   fromCurrency: string,
@@ -11,12 +10,16 @@ export async function convertCurrency(
   );
 
   if (!response.ok) {
-    throw new Error('Failed to fetch exchange rate');
+    throw new Error("Failed to fetch exchange rate");
   }
 
   const data = await response.json();
 
   const exchangeRate = data.rates[toCurrency];
+
+  if (!exchangeRate) {
+    throw new Error("Exchange rate not available");
+  }
 
   return {
     convertedAmount: amount * exchangeRate,

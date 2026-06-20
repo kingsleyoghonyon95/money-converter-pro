@@ -17,7 +17,7 @@ export default function CurrencyConverter() {
         const data = await getCurrencies();
         setCurrencies(data);
       } catch (err) {
-        console.error(err);
+        console.error("Failed to load currencies:", err);
       }
     }
 
@@ -25,6 +25,8 @@ export default function CurrencyConverter() {
   }, []);
 
   const handleConvert = async () => {
+    if (!fromCurrency || !toCurrency) return;
+
     try {
       const response = await fetch("/api/convert", {
         method: "POST",
@@ -68,6 +70,7 @@ export default function CurrencyConverter() {
             <option value="" disabled>
               From currency
             </option>
+
             {Object.entries(currencies).map(([code, name]) => (
               <option key={code} value={code}>
                 {code} - {name}
@@ -85,6 +88,7 @@ export default function CurrencyConverter() {
             <option value="" disabled>
               To currency
             </option>
+
             {Object.entries(currencies).map(([code, name]) => (
               <option key={code} value={code}>
                 {code} - {name}
